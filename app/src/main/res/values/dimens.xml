@@ -1,0 +1,19 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">30dp</dimen>
+    <dimen name="activity_vertical_margin">30dp</dimen>
+    <dimen name="tv_hello_LFL_margin_top">20dp</dimen>
+    <dimen name="tv_hello_LFL_text_size">20sp</dimen>
+    <dimen name="username_wrapper_LFL_margin_top">30dp</dimen>
+    <dimen name="password_wrapper_LFL_margin_top">20dp</dimen>
+    <dimen name="tv_register_LFL_text_size">16sp</dimen>
+    <dimen name="tv_register_LFL_margin_top">40dp</dimen>
+    <dimen name="btn_login_margin_top">50dp</dimen>
+    <dimen name="password_wrapper_RFL_margin_top">10dp</dimen>
+    <dimen name="first_name_wrapper_RFL_margin_top">10dp</dimen>
+    <dimen name="last_name_wrapper_RFL_margin_top">10dp</dimen>
+    <dimen name="tv_fake_RFL_margin_top">30dp</dimen>
+    <dimen name="cb_male_RFL_padding_right">20dp</dimen>
+    <dimen name="cb_female_RFL_margin_left">20dp</dimen>
+    <dimen name="btn_register_RFL_margin_top">20dp</dimen>
+</resources>

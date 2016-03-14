@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Homework Lesson 9</string>
+    <string name="tv_hello_LFL_hint">Hello</string>
+    <string name="username_wrapper_LFL_hint">Username</string>
+    <string name="et_password_LFL_hint">Password</string>
+    <string name="tv_register_LFL_text">Register</string>
+    <string name="btn_login_text">Login</string>
+    <string name="et_login_RFL_hint">Login</string>
+    <string name="et_password_RFL_hint">Password</string>
+    <string name="et_first_name_RFL_hint">First name</string>
+    <string name="et_last_name_RFL_hint">Last name</string>
+    <string name="cb_male_RFL_text">Male</string>
+    <string name="cb_female_RFL_text">Female</string>
+    <string name="btn_register_RFL_text">register</string>
+</resources>
