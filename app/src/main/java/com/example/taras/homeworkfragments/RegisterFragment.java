@@ -62,12 +62,12 @@ public class RegisterFragment extends Fragment {
                 password = etPassword.getText().toString();
                 firstName = etFirstName.getText().toString();
                 lastName = etLastName.getText().toString();
-                gender = cbMale.isChecked() ? "male" : "female";
+                gender = cbMale.isChecked() ? Constants.MALE_TAG : Constants.FEMALE_TAG;
 
                 if (!MainActivity.isLoginUnique(login)) {
                     AlertDialog dialog = new AlertDialog
                             .Builder(getActivity())
-                            .setMessage("Login is used")
+                            .setMessage(getString(R.string.used_login_message))
                             .create();
                     dialog.show();
                     return;
@@ -79,7 +79,7 @@ public class RegisterFragment extends Fragment {
                 MyDialogFragment myDialogFragment = new MyDialogFragment();
                 String message = MessageGenerator.generateRegistrationMessage(firstName, lastName);
                 myDialogFragment.setMessage(message);
-                myDialogFragment.show(getActivity().getSupportFragmentManager(), "dialog");
+                myDialogFragment.show(getActivity().getSupportFragmentManager(), Constants.DIALOG_TAG);
             }
         });
 
@@ -89,7 +89,7 @@ public class RegisterFragment extends Fragment {
     private void showNoGenderMessage() {
         AlertDialog dialog = new AlertDialog
             .Builder(getActivity())
-            .setMessage("No gender selected")
+            .setMessage(getString(R.string.no_gender_message))
             .create();
         dialog.show();
     }
@@ -97,7 +97,7 @@ public class RegisterFragment extends Fragment {
     private void showEmptyFieldMessage() {
         AlertDialog dialog = new AlertDialog
                 .Builder(getActivity())
-                .setMessage("Fields should be filled")
+                .setMessage(R.string.empty_field_message)
                 .create();
         dialog.show();
     }

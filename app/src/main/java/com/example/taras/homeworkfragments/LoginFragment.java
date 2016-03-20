@@ -46,7 +46,7 @@ public class LoginFragment extends Fragment {
         if (etLogin.getText().length() == 0 | etPassword.getText().length() == 0) {
             AlertDialog dialog = new AlertDialog
                     .Builder(getActivity())
-                    .setMessage("Fields should be filled")
+                    .setMessage(getString(R.string.empty_field_message))
                     .create();
             dialog.show();
             return;
@@ -65,7 +65,7 @@ public class LoginFragment extends Fragment {
         if (person == null) {
             AlertDialog dialog = new AlertDialog
                     .Builder(getActivity())
-                    .setMessage("User is not registered")
+                    .setMessage(getString(R.string.non_registered_used_message))
                     .create();
             dialog.show();
             return;
@@ -85,8 +85,8 @@ public class LoginFragment extends Fragment {
         RegisterFragment registerFragment = new RegisterFragment();
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.container, registerFragment, "register")
-                .addToBackStack("register")
+                .add(R.id.container, registerFragment, Constants.REGISTER_FRAGMENT_TAG)
+                .addToBackStack(Constants.REGISTER_FRAGMENT_TAG)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();
     }

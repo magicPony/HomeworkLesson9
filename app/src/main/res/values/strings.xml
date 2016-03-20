@@ -12,4 +12,8 @@
     <string name="cb_male_RFL_text">Male</string>
     <string name="cb_female_RFL_text">Female</string>
     <string name="btn_register_RFL_text">register</string>
+    <string name="empty_field_message">Fields should be filled</string>
+    <string name="non_registered_used_message">User is not registered</string>
+    <string name="used_login_message">Login is used</string>
+    <string name="no_gender_message">No gender selected</string>
 </resources>

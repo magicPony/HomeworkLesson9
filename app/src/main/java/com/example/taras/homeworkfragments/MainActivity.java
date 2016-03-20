@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    public static ArrayList<DataModel> mData = new ArrayList<DataModel>();
+    public static ArrayList<DataModel> mData = new ArrayList<>();
     private static LoginFragment loginFragment;
     private static DataModel lastActivePerson = null;
 
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         loginFragment = new LoginFragment();
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container, loginFragment, "login")
+                .replace(R.id.container, loginFragment, Constants.LOGIN_FRAGMENT_TAG)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();
     }
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         etLogin = (EditText) view.findViewById(R.id.et_username_LFL);
         etPassword = (EditText) view.findViewById(R.id.et_password_LFL);
         String tmp = "Hello, ";
-        tmp += person.gender == "male" ? "Mr." : "Mrs.";
+        tmp += person.gender.equals(Constants.MALE_TAG) ? "Mr." : "Mrs.";
         tmp += person.firstName;
         tmp += " ";
         tmp += person.lastName;
@@ -78,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putSerializable("data", mData);
+        outState.putSerializable(Constants.DATA_SERIALIZABLE_TAG, mData);
 
         if (lastActivePerson != null) {
-            outState.putSerializable("active", lastActivePerson);
+            outState.putSerializable(Constants.ACTIVE_PERSON_TAG, lastActivePerson);
         }
     }
 
@@ -90,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         mData = (ArrayList<DataModel>) savedInstanceState.getSerializable("data");
 
-        if (savedInstanceState.getSerializable("active") != null) {
-            lastActivePerson = (DataModel) savedInstanceState.getSerializable("active");
+        if (savedInstanceState.getSerializable(Constants.ACTIVE_PERSON_TAG) != null) {
+            lastActivePerson = (DataModel) savedInstanceState.getSerializable(Constants.ACTIVE_PERSON_TAG);
             updateContent(lastActivePerson);
         }
     }

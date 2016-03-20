@@ -6,7 +6,7 @@ package com.example.taras.homeworkfragments;
 public class MessageGenerator {
     public static String generateWelcomeMessage(String firstName, String lastName, String gender) {
         String res = "Welcome, ";
-        res += gender == "male" ? "Mr." : "Mrs.";
+        res += gender.equals(Constants.MALE_TAG) ? "Mr." : "Mrs.";
         res += firstName;
         res += " ";
         res += lastName;
