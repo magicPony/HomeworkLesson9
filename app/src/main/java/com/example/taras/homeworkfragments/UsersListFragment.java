@@ -22,13 +22,11 @@ import java.util.ArrayList;
 final public class UsersListFragment extends Fragment implements View.OnClickListener {
     private LinearLayout linearLayout;
     private LayoutInflater inflater;
-    private ArrayList<DataModel> data;
     private TextView tvEmptyListMessage;
     private EventHandler eventHandler;
 
-    public UsersListFragment(EventHandler eventHandler, ArrayList<DataModel> data) {
+    public UsersListFragment(EventHandler eventHandler) {
         this.eventHandler = eventHandler;
-        this.data = data;
     }
 
     @Override
@@ -79,6 +77,7 @@ final public class UsersListFragment extends Fragment implements View.OnClickLis
     public void initData() {
         linearLayout.removeAllViews();
         linearLayout.invalidate();
+        ArrayList<DataModel> data = eventHandler.loadData();
 
         for (DataModel person : data) {
             addPersonToList(person);
@@ -90,8 +89,6 @@ final public class UsersListFragment extends Fragment implements View.OnClickLis
     @Override
     public void onClick(View v) {
         DataModel person = eventHandler.findUserByLogin((String) v.getTag());
-        eventHandler.removePerson(person);
-
         EditPersonFragment editPersonFragment;
         editPersonFragment = new EditPersonFragment(person, (EventHandler) getActivity());
 

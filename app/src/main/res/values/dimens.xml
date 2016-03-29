@@ -16,4 +16,18 @@
     <dimen name="cb_male_RFL_padding_right">20dp</dimen>
     <dimen name="cb_female_RFL_margin_left">20dp</dimen>
     <dimen name="btn_register_RFL_margin_top">20dp</dimen>
+    <dimen name="about_fragment_padding">10dp</dimen>
+    <dimen name="tv_text_AFL_text_size">20sp</dimen>
+    <dimen name="et_EPFL_margin">10dp</dimen>
+    <dimen name="PCL_padding">10dp</dimen>
+    <dimen name="PCL_margin_top">5dp</dimen>
+    <dimen name="PCL_margin_bottom">5dp</dimen>
+    <dimen name="tv_username_PCL_text_size">25sp</dimen>
+    <dimen name="tv_name_PCL_margin_top">5dp</dimen>
+    <dimen name="tv_name_PCL_text_size">18sp</dimen>
+    <dimen name="tv_settings_SFL_text_size">30sp</dimen>
+    <dimen name="tv_settings_SFL_margin_top">20dp</dimen>
+    <dimen name="tv_settings_SFL_margin_bottom">30dp</dimen>
+    <dimen name="tv_empty_list_message_USFL_margin_top">50dp</dimen>
+    <dimen name="tv_empty_list_message_USFL_text_size">20sp</dimen>
 </resources>

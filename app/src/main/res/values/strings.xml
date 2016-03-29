@@ -25,4 +25,10 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="save">Save</string>
+    <string name="non_registered_user_or_wrong_password">User doesn\'t exist, or wrong password</string>
+    <string name="password">Password</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="kobe_bryant">Kobe Bryant</string>
+    <string name="user_list_empty">Users list empty</string>
 </resources>

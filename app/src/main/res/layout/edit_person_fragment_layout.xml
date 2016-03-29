@@ -6,17 +6,17 @@
 
     <EditText
         android:id="@+id/et_login_EPFL"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/et_EPFL_margin"
         android:gravity="center"
-        android:text="Login"
+        android:text="@string/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/et_password_EPFL"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/et_EPFL_margin"
         android:gravity="center"
-        android:text="Password"
+        android:text="@string/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
@@ -24,18 +24,18 @@
 
     <EditText
         android:id="@+id/et_first_name_EPFL"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/et_EPFL_margin"
         android:gravity="center"
-        android:text="First name"
+        android:text="@string/first_name"
         android:layout_below="@id/et_password_EPFL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/et_last_name_EPFL"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/et_EPFL_margin"
         android:gravity="center"
-        android:text="Last name"
+        android:text="@string/last_name"
         android:layout_below="@id/et_first_name_EPFL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

@@ -18,9 +18,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 final public class MainActivity extends AppCompatActivity implements EventHandler {
-    public static DBHelper mDBHelper;
-    public static ArrayList<DataModel> mData = new ArrayList<>();
-    private static LoginFragment mLoginFragment = new LoginFragment();
+    public DBHelper dBHelper;
+    private LoginFragment loginFragment = new LoginFragment((EventHandler) this);
     private static DataModel lastActivePerson = null;
     private SharedPreferences preferences;
     private UsersListFragment usersListFragment;
@@ -29,7 +28,7 @@ final public class MainActivity extends AppCompatActivity implements EventHandle
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mDBHelper = new DBHelper(this);
+        dBHelper = new DBHelper(this);
 
         if (savedInstanceState == null) {
             commitLoginFragment();
@@ -37,24 +36,24 @@ final public class MainActivity extends AppCompatActivity implements EventHandle
     }
 
     @Override
-    public void registerPerson(String login, String password, String firstName, String lastName, String gender) {
-        mData.add(new DataModel(login, password, firstName, lastName, gender));
-
+    public void registerPerson(DataModel person) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(Constants.LOGIN_TAG, login);
-        contentValues.put(Constants.PASSWORD_TAG, password);
-        contentValues.put(Constants.FIRST_NAME_TAG, firstName);
-        contentValues.put(Constants.LAST_NAME_TAG, lastName);
-        contentValues.put(Constants.GENDER_TAG, gender);
+        contentValues.put(Constants.LOGIN_TAG, person.getLogin());
+        contentValues.put(Constants.PASSWORD_TAG, person.getPassword());
+        contentValues.put(Constants.FIRST_NAME_TAG, person.getFirstName());
+        contentValues.put(Constants.LAST_NAME_TAG, person.getLastName());
+        contentValues.put(Constants.GENDER_TAG, person.getGender());
 
-        SQLiteDatabase db = mDBHelper.getWritableDatabase();
+        SQLiteDatabase db = dBHelper.getWritableDatabase();
         db.insert(Constants.DATA_BASE_NAME, null, contentValues);
-        mDBHelper.close();
+        dBHelper.close();
     }
 
     @Override
     public boolean isLoginUnique(String login) {
-        for (DataModel i : mData)
+        ArrayList<DataModel> data = loadData();
+
+        for (DataModel i : data)
             if (i.getLogin().equals(login)) {
                 return false;
             }
@@ -64,7 +63,9 @@ final public class MainActivity extends AppCompatActivity implements EventHandle
 
     @Override
     public DataModel findUserByLogin(String login) {
-        for (DataModel i : mData)
+        ArrayList<DataModel> data = loadData();
+
+        for (DataModel i : data)
             if (i.getLogin().equals(login)) {
                 return i;
             }
@@ -74,14 +75,12 @@ final public class MainActivity extends AppCompatActivity implements EventHandle
 
     @Override
     public void removePerson(DataModel person) {
-        mData.remove(DataModel.clone(person));
-        mDBHelper.removePerson(person);
+        dBHelper.removePerson(person);
     }
 
     @Override
     public void updateContent(DataModel person) {
-        // fill first fragment with person's info
-        View view = mLoginFragment.getView();
+        View view = loginFragment.getView();
         TextView tvHello;
         EditText etLogin, etPassword;
         tvHello = (TextView) view.findViewById(R.id.tv_hello_LFL);
@@ -102,7 +101,6 @@ final public class MainActivity extends AppCompatActivity implements EventHandle
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putSerializable(Constants.DATA_SERIALIZABLE_TAG, mData);
 
         if (lastActivePerson != null) {
             outState.putSerializable(Constants.ACTIVE_PERSON_TAG, lastActivePerson);
@@ -112,7 +110,6 @@ final public class MainActivity extends AppCompatActivity implements EventHandle
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        mData = (ArrayList<DataModel>) savedInstanceState.getSerializable("data");
 
         if (savedInstanceState.getSerializable(Constants.ACTIVE_PERSON_TAG) != null) {
             lastActivePerson = (DataModel) savedInstanceState.getSerializable(Constants.ACTIVE_PERSON_TAG);
@@ -146,7 +143,7 @@ final public class MainActivity extends AppCompatActivity implements EventHandle
     }
 
     private void commitUsersListFragment() {
-        usersListFragment = new UsersListFragment((EventHandler) this, mDBHelper.loadData(loadPreferences()));
+        usersListFragment = new UsersListFragment((EventHandler) this);
         hideKeyboard();
 
         getSupportFragmentManager()
@@ -202,7 +199,7 @@ final public class MainActivity extends AppCompatActivity implements EventHandle
     public void commitLoginFragment() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container, mLoginFragment, Constants.LOGIN_FRAGMENT_TAG)
+                .replace(R.id.container, loginFragment, Constants.LOGIN_FRAGMENT_TAG)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();
     }
@@ -243,8 +240,12 @@ final public class MainActivity extends AppCompatActivity implements EventHandle
     }
 
     @Override
-    public void addPerson(DataModel person) {
-        mData.add(person);
+    public void updateUsersList() {
         usersListFragment.initData();
+    }
+
+    @Override
+    public ArrayList<DataModel> loadData() {
+        return dBHelper.loadData(loadPreferences());
     }
 }

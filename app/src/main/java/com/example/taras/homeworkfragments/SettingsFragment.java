@@ -72,10 +72,6 @@ final public class SettingsFragment extends Fragment implements RadioGroup.OnChe
         rbLastNameOrder = (RadioButton) view.findViewById(R.id.rb_by_last_name_SFL);
     }
 
-    /*public void setEventHandler(EventHandler eventHandler) {
-        this.eventHandler = eventHandler;
-    }*/
-
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {

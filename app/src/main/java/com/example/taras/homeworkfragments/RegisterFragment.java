@@ -79,8 +79,9 @@ final public class RegisterFragment extends Fragment {
                     return;
                 }
 
-                eventHandler.registerPerson(login, password, firstName, lastName, gender);
-                eventHandler.updateContent(MainActivity.mData.get(MainActivity.mData.size() - 1));
+                DataModel person = new DataModel(login, password, firstName, lastName, gender);
+                eventHandler.registerPerson(person);
+                eventHandler.updateContent(person);
 
                 MyDialogFragment myDialogFragment = new MyDialogFragment();
                 String message = MessageGenerator.generateRegistrationMessage(firstName, lastName);

@@ -1,5 +1,7 @@
 package com.example.taras.homeworkfragments;
 
+import java.util.ArrayList;
+
 /**
  * Created by taras on 27.03.16.
  */
@@ -12,7 +14,9 @@ public interface EventHandler {
 
     void showNoGenderMessage();
 
-    void addPerson(DataModel person);
+    void updateUsersList();
+
+    ArrayList<DataModel> loadData();
 
     boolean isLoginUnique(String login);
 
@@ -20,7 +24,7 @@ public interface EventHandler {
 
     void removePerson(DataModel person);
 
-    void registerPerson(String login, String password, String firstName, String lastName, String gender);
+    void registerPerson(DataModel person);
 
     void updateContent(DataModel person);
 }

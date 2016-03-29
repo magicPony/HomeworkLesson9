@@ -14,6 +14,12 @@ import android.widget.EditText;
  * Created by taras on 14.03.16.
  */
 final public class LoginFragment extends Fragment {
+    EventHandler eventHandler;
+
+    public LoginFragment(EventHandler eventHandler) {
+        this.eventHandler = eventHandler;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,20 +58,15 @@ final public class LoginFragment extends Fragment {
             return;
         }
 
-        DataModel person = null;
         String login, password;
         login = etLogin.getText().toString();
         password = etPassword.getText().toString();
+        DataModel person = eventHandler.findUserByLogin(login);
 
-        for (DataModel i : MainActivity.mData)
-            if (i.getLogin().equals(login) && i.getPassword().equals(password)) {
-                person = i;
-            }
-
-        if (person == null) {
+        if (person == null || !person.getPassword().equals(password)) {
             AlertDialog dialog = new AlertDialog
                     .Builder(getActivity())
-                    .setMessage(getString(R.string.non_registered_used_message))
+                    .setMessage(getString(R.string.non_registered_user_or_wrong_password))
                     .create();
             dialog.show();
             return;

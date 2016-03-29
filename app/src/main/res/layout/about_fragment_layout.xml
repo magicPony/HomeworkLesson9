@@ -7,8 +7,8 @@
 
     <TextView
         android:id="@+id/tv_text_AFL"
-        android:padding="10dp"
-        android:textSize="20dp"
+        android:padding="@dimen/about_fragment_padding"
+        android:textSize="@dimen/tv_text_AFL_text_size"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

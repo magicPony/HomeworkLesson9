@@ -39,13 +39,4 @@ final public class DataModel implements Serializable {
     public String getPassword() {
         return password;
     }
-
-    public static DataModel clone(DataModel person) {
-        return new DataModel(
-                person.getLogin(),
-                person.getPassword(),
-                person.getFirstName(),
-                person.getLastName(),
-                person.getGender());
-    }
 }

@@ -83,14 +83,17 @@ public class EditPersonFragment extends Fragment implements View.OnClickListener
             return;
         }
 
-        eventHandler.registerPerson(login, password, firstName, lastName, gender);
-        eventHandler.updateContent(MainActivity.mData.get(MainActivity.mData.size() - 1));
+        DataModel person = new DataModel(login, password, firstName, lastName, gender);
 
         MyDialogFragment myDialogFragment = new MyDialogFragment();
         String message = MessageGenerator.generateRegistrationMessage(firstName, lastName);
         myDialogFragment.setMessage(message);
         myDialogFragment.show(getActivity().getSupportFragmentManager(), Constants.DIALOG_TAG);
-        eventHandler.addPerson(new DataModel(login, password, firstName, lastName, gender));
+
+        eventHandler.removePerson(this.person);
+        eventHandler.registerPerson(person);
+        eventHandler.updateContent(person);
+        eventHandler.updateUsersList();
     }
 
     @Override

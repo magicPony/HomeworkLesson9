@@ -21,9 +21,9 @@
             android:id="@+id/tv_empty_list_message_USFL"
             android:visibility="gone"
             android:layout_centerHorizontal="true"
-            android:textSize="20sp"
-            android:layout_marginTop="50dp"
-            android:text="Users list empty"
+            android:textSize="@dimen/tv_empty_list_message_USFL_text_size"
+            android:layout_marginTop="@dimen/tv_empty_list_message_USFL_margin_top"
+            android:text="@string/user_list_empty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
