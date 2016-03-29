@@ -13,7 +13,13 @@ import android.widget.EditText;
 /**
  * Created by taras on 14.03.16.
  */
-public class RegisterFragment extends Fragment {
+final public class RegisterFragment extends Fragment {
+    private EventHandler eventHandler;
+
+    public RegisterFragment(EventHandler eventHandler) {
+        this.eventHandler = eventHandler;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,16 +50,16 @@ public class RegisterFragment extends Fragment {
                 EditText etLogin, etPassword, etFirstName, etLastName;
                 etLogin = (EditText) view.findViewById(R.id.et_login_RFL);
                 etPassword = (EditText) view.findViewById(R.id.et_password_RFL);
-                etFirstName = (EditText) view.findViewById(R.id.et_last_name_RFL);
+                etFirstName = (EditText) view.findViewById(R.id.et_first_name_RFL);
                 etLastName = (EditText) view.findViewById(R.id.et_last_name_RFL);
 
                 if (etLogin.getText().length() == 0 || etPassword.getText().length() == 0 || etFirstName.getText().length() == 0 || etLastName.getText().length() == 0) {
-                    showEmptyFieldMessage();
+                    eventHandler.showEmptyFieldMessage();
                     return;
                 }
 
                 if (!cbFemale.isChecked() && !cbMale.isChecked()) {
-                    showNoGenderMessage();
+                    eventHandler.showNoGenderMessage();
                     return;
                 }
 
@@ -64,7 +70,7 @@ public class RegisterFragment extends Fragment {
                 lastName = etLastName.getText().toString();
                 gender = cbMale.isChecked() ? Constants.MALE_TAG : Constants.FEMALE_TAG;
 
-                if (!MainActivity.isLoginUnique(login)) {
+                if (!eventHandler.isLoginUnique(login)) {
                     AlertDialog dialog = new AlertDialog
                             .Builder(getActivity())
                             .setMessage(getString(R.string.used_login_message))
@@ -73,8 +79,8 @@ public class RegisterFragment extends Fragment {
                     return;
                 }
 
-                MainActivity.registerPerson(login, password, firstName, lastName, gender);
-                MainActivity.updateContent(MainActivity.mData.get(MainActivity.mData.size() - 1));
+                eventHandler.registerPerson(login, password, firstName, lastName, gender);
+                eventHandler.updateContent(MainActivity.mData.get(MainActivity.mData.size() - 1));
 
                 MyDialogFragment myDialogFragment = new MyDialogFragment();
                 String message = MessageGenerator.generateRegistrationMessage(firstName, lastName);
@@ -84,22 +90,6 @@ public class RegisterFragment extends Fragment {
         });
 
         return  view;
-    }
-
-    private void showNoGenderMessage() {
-        AlertDialog dialog = new AlertDialog
-            .Builder(getActivity())
-            .setMessage(getString(R.string.no_gender_message))
-            .create();
-        dialog.show();
-    }
-
-    private void showEmptyFieldMessage() {
-        AlertDialog dialog = new AlertDialog
-                .Builder(getActivity())
-                .setMessage(R.string.empty_field_message)
-                .create();
-        dialog.show();
     }
 
     private void switchGender(CheckBox cbMale, CheckBox cbFemale) {

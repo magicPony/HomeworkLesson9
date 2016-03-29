@@ -3,7 +3,7 @@ package com.example.taras.homeworkfragments;
 /**
  * Created by taras on 14.03.16.
  */
-public class MessageGenerator {
+final public class MessageGenerator {
     public static String generateWelcomeMessage(String firstName, String lastName, String gender) {
         String res = "Welcome, ";
         res += gender.equals(Constants.MALE_TAG) ? "Mr." : "Mrs.";

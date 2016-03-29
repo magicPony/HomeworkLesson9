@@ -13,7 +13,7 @@ import android.widget.EditText;
 /**
  * Created by taras on 14.03.16.
  */
-public class LoginFragment extends Fragment {
+final public class LoginFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class LoginFragment extends Fragment {
         etLogin = (EditText) view.findViewById(R.id.et_username_LFL);
         etPassword = (EditText) view.findViewById(R.id.et_password_LFL);
 
-        if (etLogin.getText().length() == 0 | etPassword.getText().length() == 0) {
+        if (etLogin.getText().length() == 0 || etPassword.getText().length() == 0) {
             AlertDialog dialog = new AlertDialog
                     .Builder(getActivity())
                     .setMessage(getString(R.string.empty_field_message))
@@ -58,7 +58,7 @@ public class LoginFragment extends Fragment {
         password = etPassword.getText().toString();
 
         for (DataModel i : MainActivity.mData)
-            if (i.login.equals(login) && i.password.equals(password)) {
+            if (i.getLogin().equals(login) && i.getPassword().equals(password)) {
                 person = i;
             }
 
@@ -72,7 +72,8 @@ public class LoginFragment extends Fragment {
         }
 
         String message;
-        message = MessageGenerator.generateWelcomeMessage(person.firstName, person.lastName, person.gender);
+        message = MessageGenerator
+                .generateWelcomeMessage(person.getFirstName(), person.getLastName(), person.getGender());
 
         AlertDialog dialog = new AlertDialog
                 .Builder(getActivity())
@@ -82,7 +83,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void commitRegisterFragment() {
-        RegisterFragment registerFragment = new RegisterFragment();
+        RegisterFragment registerFragment = new RegisterFragment((EventHandler) getActivity());
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.container, registerFragment, Constants.REGISTER_FRAGMENT_TAG)

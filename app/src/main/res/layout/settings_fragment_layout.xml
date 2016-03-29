@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_settings_SFL"
+        android:text="@string/sort_users"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RadioGroup
+        android:id="@+id/rg_order"
+        android:layout_below="@id/tv_settings_SFL"
+        android:layout_alignLeft="@id/tv_settings_SFL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rb_by_login_SFL"
+            android:layout_below="@id/tv_settings_SFL"
+            android:text="@string/by_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/rb_by_first_name_SFL"
+            android:layout_below="@id/rb_by_login_SFL"
+            android:text="@string/by_first_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/rb_by_last_name_SFL"
+            android:layout_below="@id/rb_by_first_name_SFL"
+            android:text="@string/by_last_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RadioGroup>
+
+</RelativeLayout>

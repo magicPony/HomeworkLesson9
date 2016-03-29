@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/et_login_EPFL"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/et_password_EPFL"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_below="@+id/et_login_EPFL" />
+
+    <EditText
+        android:id="@+id/et_first_name_EPFL"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="First name"
+        android:layout_below="@id/et_password_EPFL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/et_last_name_EPFL"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="Last name"
+        android:layout_below="@id/et_first_name_EPFL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RadioGroup
+        android:layout_below="@id/et_last_name_EPFL"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rb_male_EPFL"
+            android:checked="true"
+            android:text="@string/male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/rb_female_EPFL"
+            android:text="@string/female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_save_EPFL"
+        android:layout_margin="30dp"
+        android:text="@string/save"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

@@ -5,8 +5,8 @@ import java.io.Serializable;
 /**
  * Created by taras on 14.03.16.
  */
-public class DataModel implements Serializable {
-    String login, password, firstName, lastName, gender;
+final public class DataModel implements Serializable {
+    private String login, password, firstName, lastName, gender;
 
     public DataModel(String login, String password, String firstName, String lastName, String gender) {
         this.login = login;
@@ -16,23 +16,36 @@ public class DataModel implements Serializable {
         this.gender = gender;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public String getLogin() {
+        return login;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getName() {
+        return firstName + " " + lastName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getGender() {
+        return gender;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public static DataModel clone(DataModel person) {
+        return new DataModel(
+                person.getLogin(),
+                person.getPassword(),
+                person.getFirstName(),
+                person.getLastName(),
+                person.getGender());
     }
 }

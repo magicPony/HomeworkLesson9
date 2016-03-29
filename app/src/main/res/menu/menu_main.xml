@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mi_about"
+        android:title="about"
+        android:showAsAction="never" />
+
+    <item
+        android:id="@+id/mi_settings"
+        android:title="settings"
+        android:showAsAction="never" />
+
+    <item
+        android:id="@+id/mi_show_users"
+        android:title="Show users"
+        android:showAsAction="never" />
+</menu>

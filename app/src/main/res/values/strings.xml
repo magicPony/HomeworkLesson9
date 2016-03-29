@@ -16,4 +16,13 @@
     <string name="non_registered_used_message">User is not registered</string>
     <string name="used_login_message">Login is used</string>
     <string name="no_gender_message">No gender selected</string>
+    <string name="sort_users">Sort users by...</string>
+    <string name="by_login">by login</string>
+    <string name="by_first_name">by first name</string>
+    <string name="by_last_name">by last name</string>
+    <string name="settings">Settings</string>
+    <string name="login">Login</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="save">Save</string>
 </resources>

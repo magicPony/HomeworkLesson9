@@ -9,7 +9,7 @@ import android.support.v7.app.AlertDialog;
 /**
  * Created by taras on 14.03.16.
  */
-public class MyDialogFragment extends DialogFragment {
+final public class MyDialogFragment extends DialogFragment {
     private static String message;
 
     public void setMessage(String message) {
